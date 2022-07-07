@@ -11,7 +11,7 @@ public class Encheres {
     private int no_encheres;
     private int no_utilisateur;
     private int no_article;
-    private Date dateEnchere;
+    private Date date_enchere;
     private int montant_enchere;
 
 }
