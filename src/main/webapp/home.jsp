@@ -24,9 +24,9 @@
     <input type="text" name="password" id="password">
     <div>
         <input type="button" value="Connexion" name="button">
-        <input type="checkbox" name="box" id="box">
+        <input type="checkbox" name="box" id="box" checked>
         <label for="box"> Se souvenir de moi</label>
-        <a href="#"> Mot de passe oublié</a>
+        <a href="lostpassword"> Mot de passe oublié</a>
     </div>
 </form>
 <a href="compteServlet">Créer un compte</a>
