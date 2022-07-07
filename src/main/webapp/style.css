@@ -1,0 +1,16 @@
+.addAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.formInscript {
+    text-align: center;
+
+}
+
+.titreProfil {
+    text-align: center;
+}
+

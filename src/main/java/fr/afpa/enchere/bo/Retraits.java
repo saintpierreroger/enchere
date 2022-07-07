@@ -1,4 +1,4 @@
-package fr.afpa.enchere.dal;
+package fr.afpa.enchere.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
