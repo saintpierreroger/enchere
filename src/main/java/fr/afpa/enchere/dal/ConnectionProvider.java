@@ -1,4 +1,4 @@
-package dal;
+package fr.afpa.enchere.dal;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,7 +19,7 @@ public abstract class ConnectionProvider {
 		Context context;
 		try {
 			context = new InitialContext();
-			ConnectionProvider.dataSource = (DataSource)context.lookup("java:comp/env/jdbc/maBDD");
+			ConnectionProvider.dataSource = (DataSource)context.lookup("java:comp/env/jdbc/enchere");
 		} catch (NamingException e) {
 			e.printStackTrace();
 			throw new RuntimeException("Impossible d'accéder à la base de données");

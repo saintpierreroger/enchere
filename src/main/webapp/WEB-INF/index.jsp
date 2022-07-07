@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>Liste des enchères</h1>
-<a href="${pageContext.request.contextPath}/home.jsp">S'inscire - Se connecter</a>
+<a href="${pageContext.request.contextPath}/connexionservlet">S'inscire - Se connecter</a>
 <div class="container-fluid">
     <h2>Filtres :</h2>
     <form class="d-flex" role="search">

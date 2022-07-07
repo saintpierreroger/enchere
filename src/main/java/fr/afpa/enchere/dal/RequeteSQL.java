@@ -63,4 +63,32 @@ public class RequeteSQL {
         }
     }
 
+    // REQUETE POUR LA CONNEXION A SON PROFIL
+    public boolean connexionSQL(String pseudo, String password) {
+        int idUser = 0;
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "SELECT no_utilisateur FROM utilisateurs WHERE pseudo = ? and mot_de_passe = ?");
+            pstmt.setString(1, pseudo);
+            pstmt.setString(2, password);
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                idUser = rs.getInt("no_utilisateur");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        if (idUser != 0) {
+            System.out.println("connecter");
+            return true;
+
+        } else {
+            System.out.println("pas connecter");
+            return false;
+        }
+    }
+
 }
