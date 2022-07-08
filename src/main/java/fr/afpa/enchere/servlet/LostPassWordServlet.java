@@ -27,6 +27,6 @@ public class LostPassWordServlet extends HttpServlet {
         if (newPassWord.equals(confirmation)) {
             passeWordLost.updateMDPlost(mail, pseudo, newPassWord);
         }
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
     }
 }

@@ -14,7 +14,7 @@ import java.io.IOException;
 public class CreerCompteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/creationCompte.jsp").forward(request, response);
     }
 
     @Override
@@ -33,7 +33,8 @@ public class CreerCompteServlet extends HttpServlet {
         String confirmPassWord = request.getParameter("confirm");
         newCompte.insertCreaCompteSQL(pseudoUtilisateur, nomUtilisateur, prenomUtilisateur, mailUtilisateur, telUtilisateur, rue, codePostal, ville, passWord, confirmPassWord);
         if (passWord.equals(confirmPassWord)) {
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            //changer vers la page d'acceuille connected
+            request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
         }
     }
 }
