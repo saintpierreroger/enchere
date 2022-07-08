@@ -13,11 +13,11 @@
 <body>
 <h1>Liste des enchères</h1>
 <!-- Lien pour se connecter ou s'inscrire, renvoi vers la view home -->
-<a href="${pageContext.request.contextPath}/home.jsp">S'inscire - Se connecter</a>
+<a href="${pageContext.request.contextPath}/connexionservlet">S'inscire - Se connecter</a>
 <!--  -->
 <div class="container-fluid">
     <h2>Filtres :</h2>
-    <form action="${pageContext.request.contextPath}/index" method="post" class="d-flex" role="search">
+    <form action="${pageContext.request.contextPath}/connexionservlet" method="post" class="d-flex" role="search">
         <input class="form-control me-2" type="search" name="name" placeholder="Le nom de l'article contient"
                aria-label="Le nom de l'article contient">
         <button class="btn btn-outline-success" type="submit">Rechercher</button>

@@ -57,7 +57,7 @@
     </form>
 </div>
 <div>
-    <a href="home.jsp" class="btnAnnuler">Annuler</a>
+    <a href="connexionservlet" class="btnAnnuler">Annuler</a>
 </div>
 
 </body>
