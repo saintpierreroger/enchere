@@ -3,6 +3,7 @@ package fr.afpa.enchere.servlet;
 import fr.afpa.enchere.dal.RequeteSQL;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,12 +15,11 @@ import java.io.IOException;
 public class CreerCompteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/creationCompte.jsp").forward(request, response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        boolean connecter = true;
 
         RequeteSQL newCompte = new RequeteSQL();
         String pseudoUtilisateur = request.getParameter("pseudo");
@@ -33,10 +33,8 @@ public class CreerCompteServlet extends HttpServlet {
         String passWord = request.getParameter("password");
         String confirmPassWord = request.getParameter("confirm");
         newCompte.insertCreaCompteSQL(pseudoUtilisateur, nomUtilisateur, prenomUtilisateur, mailUtilisateur, telUtilisateur, rue, codePostal, ville, passWord, confirmPassWord);
-        if (request.getParameter("creer") != null) {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("WEB-INF/creationCompte.jsp").forward(request, response);
+        if (passWord.equals(confirmPassWord)) {
+            request.getRequestDispatcher("home.jsp").forward(request, response);
         }
     }
 }
