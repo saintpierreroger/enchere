@@ -24,6 +24,7 @@ public class Index extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         // Utilisation de la DAL
         ArticleSQL articleSQL = new ArticleSQL();
         // Recherche d'un article par son nom mais pas affichage pour l'instant

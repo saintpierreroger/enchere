@@ -3,10 +3,7 @@ package fr.afpa.enchere.servlet;
 import fr.afpa.enchere.dal.RequeteSQL;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
@@ -15,6 +12,8 @@ import java.io.IOException;
 public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+// Je redirige vers la page index.jsp
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("login")) {
@@ -30,10 +29,24 @@ public class ConnexionServlet extends HttpServlet {
         RequeteSQL connection = new RequeteSQL();
         String pseudoUser = request.getParameter("username");
         String passewordUser = request.getParameter("password");
-        connection.connexionSQL(pseudoUser, passewordUser);
-        Cookie monCookie = new Cookie("login", pseudoUser);
-        response.addCookie(monCookie);
-        request.getRequestDispatcher("WEB-INF/connecter.jsp").forward(request, response);
+        boolean connexion = connection.connexionSQL(pseudoUser, passewordUser);
+
+        String check = request.getParameter("box");
+        if (check != null) {
+            Cookie connexionCookie = new Cookie("login", pseudoUser);
+            response.addCookie(connexionCookie);
+        }
+        if (connexion) {
+            HttpSession session = request.getSession();
+            session.setAttribute("verifconnection", true);
+            System.out.println(session.getAttribute("verifconnection"));
+            request.getRequestDispatcher("WEB-INF/connecter.jsp").forward(request, response);
+        } else {
+
+            request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+
+        }
+
     }
 
 }
