@@ -25,6 +25,7 @@ public class Index extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         // Utilisation de la DAL
         ArticleSQL articleSQL = new ArticleSQL();
         String filtre = request.getParameter("filter");
