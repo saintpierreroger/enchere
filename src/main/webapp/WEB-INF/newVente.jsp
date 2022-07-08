@@ -11,7 +11,8 @@
     <title>Nouvelle vente</title>
 </head>
 <body>
-<form action="" method="">
+
+<form action="NewVente" method="post" >
     <p>
         <label for="article">Article : </label>
         <input type="text" name="article" id="article">
@@ -34,7 +35,7 @@
     <input type="file" id="photo">
     <p>
         Mise à prix:
-        <input type="number" min="1" step="1">
+        <input type="number" min="1" step="1" name="miseAprix">
     </p>
     <p>
         Début de l'enchère : <input type="date" name="debut" size="20">
