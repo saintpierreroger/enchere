@@ -20,13 +20,14 @@ public class ArticleSQL {
             " FROM articles_vendus " +
             " INNER JOIN utilisateurs " +
             "ON articles_vendus.no_utilisateur = utilisateurs.no_utilisateur";
-    //" WHERE articles_vendus.no_article = ?";
 
-    private static final String SELECT_BY_NOM_CATEGORIE = "SELECT nom_article, prix_vente, date_fin_encheres, pseudo" +
+    private static final String SELECT_BY_NOM_ARTICLE_ET_NO_CATEGORIE = "SELECT nom_article, prix_vente, date_fin_encheres, pseudo" +
             " FROM articles_vendus " +
             " INNER JOIN utilisateurs " +
             " ON articles_vendus.no_utilisateur = utilisateurs.no_utilisateur " +
-            " WHERE articles_vendus.nom_article LIKE ?";
+            " INNER JOIN categories " +
+            " ON articles_vendus.no_categorie = categories.no_categorie" +
+            " WHERE articles_vendus.nom_article LIKE ? & categories.no_categorie LIKE ?";
 
     public List<Articles_Vendus> selectAll() {
         List<Articles_Vendus> listeArticles = new ArrayList<>();
@@ -58,11 +59,12 @@ public class ArticleSQL {
         return listeArticles;
     }
 
-    public List<UtilisateursArticles_Vendus> selectByNomCategorie(String name) {
+    public List<UtilisateursArticles_Vendus> selectByNomArticleEtNoCategorie(String name, int no_categorie) {
         List<UtilisateursArticles_Vendus> listeArticles = new ArrayList<>();
         try (Connection connection = ConnectionProvider.getConnection()) {
-            PreparedStatement pstmt = connection.prepareStatement(SELECT_BY_NOM_CATEGORIE);
-            pstmt.setString(1, "name");
+            PreparedStatement pstmt = connection.prepareStatement(SELECT_BY_NOM_ARTICLE_ET_NO_CATEGORIE);
+            pstmt.setString(1, "%" + name + "%");
+            pstmt.setInt(2, no_categorie);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 listeArticles.add(new UtilisateursArticles_Vendus(rs.getString("nom_article"), rs.getInt("prix_vente"), rs.getDate("date_fin_encheres"), rs.getString("pseudo")));
