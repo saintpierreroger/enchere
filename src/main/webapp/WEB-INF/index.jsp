@@ -12,14 +12,35 @@
 </head>
 <body>
 <h1>Liste des enchères</h1>
-<a href="${pageContext.request.contextPath}/connexionservlet">S'inscire - Se connecter</a>
+<!-- Lien pour se connecter ou s'inscrire, renvoi vers la view home -->
+<a href="${pageContext.request.contextPath}/home.jsp">S'inscire - Se connecter</a>
+<!--  -->
 <div class="container-fluid">
     <h2>Filtres :</h2>
-    <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Le nom de l'article contient"
+    <form action="${pageContext.request.contextPath}/index" method="post" class="d-flex" role="search">
+        <input class="form-control me-2" type="search" name="name" placeholder="Le nom de l'article contient"
                aria-label="Le nom de l'article contient">
         <button class="btn btn-outline-success" type="submit">Rechercher</button>
     </form>
 </div>
+
+<div>
+    <c:forEach var="article" items="${articles}">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${article.nom_article}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">${article.date_fin_encheres}</li>
+                <li class="list-group-item">${article.nom_article}</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">${article.pseudo}</a>
+            </div>
+        </div>
+    </c:forEach>
+</div>
+
 </body>
 </html>
