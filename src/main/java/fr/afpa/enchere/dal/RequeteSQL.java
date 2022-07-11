@@ -98,11 +98,11 @@ public class RequeteSQL {
         int idUser = 0;
         try {
             Connection connection = ConnectionProvider.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement(
+            PreparedStatement pstm = connection.prepareStatement(
                     "SELECT no_utilisateur FROM utilisateurs WHERE pseudo = ? and mot_de_passe = ?");
-            pstmt.setString(1, user.getPseudo());
-            pstmt.setString(2, user.getMotDePasse());
-            ResultSet rs = pstmt.executeQuery();
+            pstm.setString(1, user.getPseudo());
+            pstm.setString(2, user.getMotDePasse());
+            ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
                 idUser = rs.getInt("no_utilisateur");
             }

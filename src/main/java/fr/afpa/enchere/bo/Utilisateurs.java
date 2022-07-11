@@ -44,4 +44,20 @@ public class Utilisateurs {
     }
 
 
+    public Utilisateurs() {
+
+    }
+
+    public Utilisateurs(int noUtilisateur, String pseudo, String prenom, String nom, String email, String telephone, String rue, String ville, String codePostal, String newPassword) {
+        this.noUtilisateur = noUtilisateur;
+        this.pseudo = pseudo;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.mail = email;
+        this.telephone = telephone;
+        this.rue = rue;
+        this.ville = ville;
+        this.codePostal = codePostal;
+        this.motDePasse = newPassword;
+    }
 }

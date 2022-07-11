@@ -23,9 +23,11 @@ public class ModifierCompteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         RequeteSQL modifierProfil = new RequeteSQL();
-        Utilisateurs utilisateurs = modifierProfil.profilUtilisateur((Integer) session.getAttribute("id"));
+        Utilisateurs user = new Utilisateurs();
+
 
         int id = (int) session.getAttribute("id");
+
         String pseudo = request.getParameter("pseudo");
         String prenom = request.getParameter("prenom");
         String nom = request.getParameter("nom");
@@ -36,12 +38,11 @@ public class ModifierCompteServlet extends HttpServlet {
         String codePostal = request.getParameter("codePostal");
         String newPassword = request.getParameter("newPassword");
         String confirmNewPassword = request.getParameter("confirmNewPassword");
-
-
+        user = new Utilisateurs(id, pseudo, prenom, nom, email, telephone, rue, ville, codePostal, newPassword);
+        modifierProfil.modifierProfil(user);
+        System.out.println(user);
+        request.setAttribute("utilisateur", user);
         request.getRequestDispatcher("WEB-INF/profilClient.jsp").forward(request, response);
-
-
     }
-
 }
 
