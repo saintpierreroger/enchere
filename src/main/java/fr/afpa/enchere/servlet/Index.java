@@ -1,6 +1,7 @@
 package fr.afpa.enchere.servlet;
 
 import fr.afpa.enchere.dal.ArticleSQL;
+import fr.afpa.enchere.dal.CategorieSQL;
 import fr.afpa.enchere.dal.EnchereSQL;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -27,8 +28,10 @@ public class Index extends HttpServlet {
 
         // Utilisation de la DAL
         ArticleSQL articleSQL = new ArticleSQL();
+        String filtre = request.getParameter("filter");
+
         // Recherche d'un article par son nom mais pas affichage pour l'instant
-        request.setAttribute("articles", articleSQL.selectByNomCategorie("name"));
+        request.setAttribute("articles", articleSQL.selectByNomArticleEtNoCategorie("name", Integer.parseInt(filtre)));
         // Envoi à index.jsp
         request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 

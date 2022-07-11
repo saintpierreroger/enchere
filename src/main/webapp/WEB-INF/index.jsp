@@ -14,12 +14,21 @@
 <h1>Liste des enchères</h1>
 <!-- Lien pour se connecter ou s'inscrire, renvoi vers la view home -->
 <a href="${pageContext.request.contextPath}/connexionservlet">S'inscire - Se connecter</a>
-<!--  -->
+<!-- Recherche à partir d'un mot clé du nom de l'article et du numéro de catégorie -->
 <div class="container-fluid">
     <h2>Filtres :</h2>
-    <form action="${pageContext.request.contextPath}/connexionservlet" method="post" class="d-flex" role="search">
+    <form action="${pageContext.request.contextPath}/index" method="post" class="d-flex" role="search">
         <input class="form-control me-2" type="search" name="name" placeholder="Le nom de l'article contient"
                aria-label="Le nom de l'article contient">
+        <div>
+            <label for="filter">Catégorie : </label>
+            <select name="filter" id="filter">
+                <option value="1">Informatique</option>
+                <option value="2">Ameublement</option>
+                <option value="3">Vêtement</option>
+                <option value="4">Sport&Loisirs</option>
+            </select>
+        </div>
         <button class="btn btn-outline-success" type="submit">Rechercher</button>
     </form>
 </div>
