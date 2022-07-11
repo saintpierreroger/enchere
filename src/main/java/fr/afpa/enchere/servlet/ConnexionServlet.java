@@ -1,5 +1,6 @@
 package fr.afpa.enchere.servlet;
 
+
 import fr.afpa.enchere.dal.RequeteSQL;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -40,7 +41,7 @@ public class ConnexionServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("verifconnection", true);
             System.out.println(session.getAttribute("verifconnection"));
-            request.getRequestDispatcher("WEB-INF/connecter.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/indexConnecter.jsp").forward(request, response);
         } else {
 
             request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
