@@ -27,13 +27,13 @@ public class CreerCompteServlet extends HttpServlet {
         String mailUtilisateur = request.getParameter("mail");
         String telUtilisateur = request.getParameter("tel");
         String rue = request.getParameter("rue");
-        int codePostal = Integer.parseInt(request.getParameter("codepostal"));
+        String codePostal = request.getParameter("codepostal");
         String ville = request.getParameter("ville");
         String passWord = request.getParameter("password");
         String confirmPassWord = request.getParameter("confirm");
         newCompte.insertCreaCompteSQL(pseudoUtilisateur, nomUtilisateur, prenomUtilisateur, mailUtilisateur, telUtilisateur, rue, codePostal, ville, passWord, confirmPassWord);
         if (passWord.equals(confirmPassWord)) {
-            //changer vers la page d'acceuille connected
+            //changer vers la page d'acceuil connected
             request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
         }
     }
