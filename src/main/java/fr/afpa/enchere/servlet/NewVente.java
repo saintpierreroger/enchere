@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
-@WebServlet( "/NewVente")
+@WebServlet("/NewVente")
 public class NewVente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,17 +29,15 @@ public class NewVente extends HttpServlet {
         int codePostal = Integer.parseInt(request.getParameter("codePostal"));
         String ville = request.getParameter("ville");
 
-        request.setAttribute("article",article);
-        request.setAttribute("description",description);
-        request.setAttribute("categorie",categorie);
-        request.setAttribute("prix",prix);
-        request.setAttribute("dateDebut",date);
-        request.setAttribute("dateFin",dateFin);
-        request.setAttribute("rue",rue);
-        request.setAttribute("codePostal",codePostal);
-        request.setAttribute("ville",ville);
-
-
+        request.setAttribute("article", article);
+        request.setAttribute("description", description);
+        request.setAttribute("categorie", categorie);
+        request.setAttribute("prix", prix);
+        request.setAttribute("dateDebut", date);
+        request.setAttribute("dateFin", dateFin);
+        request.setAttribute("rue", rue);
+        request.setAttribute("codePostal", codePostal);
+        request.setAttribute("ville", ville);
 
 
     }

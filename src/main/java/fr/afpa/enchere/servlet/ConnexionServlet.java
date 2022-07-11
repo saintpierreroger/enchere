@@ -1,6 +1,8 @@
 package fr.afpa.enchere.servlet;
 
 
+import fr.afpa.enchere.bo.UtilisateursArticles_Vendus;
+import fr.afpa.enchere.dal.ArticleSQL;
 import fr.afpa.enchere.bo.Utilisateurs;
 import fr.afpa.enchere.dal.RequeteSQL;
 import jakarta.servlet.ServletException;
@@ -8,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @WebServlet("/connexionservlet")
@@ -31,9 +34,9 @@ public class ConnexionServlet extends HttpServlet {
 
         RequeteSQL connection = new RequeteSQL();
         String pseudoUser = request.getParameter("username");
-        String passwordUser = request.getParameter("password");
+        String passewordUser = request.getParameter("password");
         int idUtilisateur = connection.id(pseudoUser);
-        boolean connexion = connection.connexionSQL(pseudoUser, passwordUser);
+        boolean connexion = connection.connexionSQL(pseudoUser, passewordUser);
 
         String check = request.getParameter("box");
         if (check != null) {
@@ -45,6 +48,10 @@ public class ConnexionServlet extends HttpServlet {
             session.setAttribute("verifconnection", true);
             session.setAttribute("id", idUtilisateur);
             System.out.println(session.getAttribute("verifconnection"));
+            // Utilisation de la DAL
+            ArticleSQL articleSQL = new ArticleSQL();
+            // Selection des Articles en enchère
+            request.setAttribute("articles", articleSQL.selectAll1());
             request.getRequestDispatcher("WEB-INF/indexConnecter.jsp").forward(request, response);
         } else {
 
