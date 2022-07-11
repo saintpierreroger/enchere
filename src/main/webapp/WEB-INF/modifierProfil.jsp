@@ -51,7 +51,7 @@
             <label for="password">Mot de passe actuel</label>
             <input type="password" id="password" name="password">
             <label for="newPassword">Nouveau Mot de passe :</label>
-            <input type="password" name="Newpassword" id="newPassword">
+            <input type="password" name="newpassword" id="newPassword">
             <label for="confirm">Confirmation :</label>
             <input type="password" name="confirm" id="confirm">
         </div>
