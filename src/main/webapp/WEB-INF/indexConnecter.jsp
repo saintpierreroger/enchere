@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!doctype html>
 
 <html lang="fr">
@@ -14,7 +16,7 @@
 
 /// <a href="${pageContext.request.contextPath}/index">Enchères</a>
 /// <a href="${pageContext.request.contextPath}/NewVente">Vendre un article</a>
-/// <a href="${pageContext.request.contextPath}/">Mon profil</a>
+/// <a href="${pageContext.request.contextPath}/profilutilisateur">Mon profil</a>
 /// <a href="${pageContext.request.contextPath}/index">Déconnexion</a>
 
 <div class="container-fluid">
