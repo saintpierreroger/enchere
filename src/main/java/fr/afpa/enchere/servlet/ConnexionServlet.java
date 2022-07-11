@@ -35,6 +35,7 @@ public class ConnexionServlet extends HttpServlet {
         RequeteSQL connection = new RequeteSQL();
         String pseudoUser = request.getParameter("username");
         String passewordUser = request.getParameter("password");
+        int idUtilisateur = connection.id(pseudoUser);
         boolean connexion = connection.connexionSQL(pseudoUser, passewordUser);
 
         String check = request.getParameter("box");
