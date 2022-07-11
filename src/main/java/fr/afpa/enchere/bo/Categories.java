@@ -6,7 +6,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Categories {
-    private int noCategorie;
+    private int no_categorie;
     private String libelle;
+
+
 }
 
