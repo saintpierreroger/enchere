@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 public class RequeteSQL {
 
+
     public void insertCreaCompteSQL(String pseudo, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville, String motDePasse, String confirmPassWord) {
         //Cette methode sert a inserer un utilisateur dans la BDD
         try {
@@ -49,7 +50,7 @@ public class RequeteSQL {
             System.out.println(e.getMessage());
         }
         System.out.println(idUser);
-        //REQUETE POUR MODIDIER LE MOT DE PASSE PARTOUT
+        //REQUETE POUR MODIDIER LE MOT DE PASSE PERDU.
         try {
             Connection cnx = ConnectionProvider.getConnection();
             PreparedStatement pstmt = cnx.prepareStatement(
@@ -77,6 +78,7 @@ public class RequeteSQL {
             while (rs.next()) {
                 idUser = rs.getInt("no_utilisateur");
             }
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -91,4 +93,90 @@ public class RequeteSQL {
         }
     }
 
+    //METHODE FAISANT APPEL A LA REQUETE SQL UPDATE POUR MODIFIER LE PROFIL UTILISATEUR.
+    public void modifierProfil(Utilisateurs user) {
+        int idUser = 0;
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "SELECT no_utilisateur FROM utilisateurs WHERE pseudo = ? and mot_de_passe = ?");
+            pstmt.setString(1, user.getPseudo());
+            pstmt.setString(2, user.getMotDePasse());
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                idUser = rs.getInt("no_utilisateur");
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "UPDATE utilisateurs SET pseudo = ? , prenom = ? ,nom = ? ,email = ?, telephone = ?, rue = ?, ville = ?, code_postal = ? ,mot_de_passe = ? WHERE no_utilisateur = ?");
+            pstmt.setString(1, user.getPseudo());
+            pstmt.setString(2, user.getPrenom());
+            pstmt.setString(3, user.getNom());
+            pstmt.setString(4, user.getMail());
+            pstmt.setString(5, user.getTelephone());
+            pstmt.setString(6, user.getRue());
+            pstmt.setString(7, user.getVille());
+            pstmt.setInt(8, user.getCodePostal());
+            pstmt.setString(9, user.getMotDePasse());
+            pstmt.setInt(10, idUser);
+            pstmt.executeUpdate();
+
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void supprimerCompte(Utilisateurs user) {
+        int idUser = 0;
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "SELECT no_utilisateur FROM utilisateurs WHERE pseudo = ? and mot_de_passe = ?");
+            pstmt.setString(1, user.getPseudo());
+            pstmt.setString(2, user.getMotDePasse());
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                idUser = rs.getInt("no_utilisateur");
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "DELETE FROM utilisateurs WHERE no_utilisateur = ?");
+            pstmt.setInt(1, idUser);
+            pstmt.executeUpdate();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public int idUtilisateur(Utilisateurs user) {
+        int idUser = 0;
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "SELECT no_utilisateur FROM utilisateurs WHERE pseudo = ? and mot_de_passe = ?");
+            pstmt.setString(1, user.getPseudo());
+            pstmt.setString(2, user.getMotDePasse());
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                idUser = rs.getInt("no_utilisateur");
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return idUser;
+    }
 }
