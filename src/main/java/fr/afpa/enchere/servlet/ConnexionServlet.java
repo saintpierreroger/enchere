@@ -1,6 +1,7 @@
 package fr.afpa.enchere.servlet;
 
 
+import fr.afpa.enchere.bo.Utilisateurs;
 import fr.afpa.enchere.dal.RequeteSQL;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/connexionservlet")
 public class ConnexionServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -29,8 +31,9 @@ public class ConnexionServlet extends HttpServlet {
 
         RequeteSQL connection = new RequeteSQL();
         String pseudoUser = request.getParameter("username");
-        String passewordUser = request.getParameter("password");
-        boolean connexion = connection.connexionSQL(pseudoUser, passewordUser);
+        String passwordUser = request.getParameter("password");
+        int idUtilisateur = connection.id(pseudoUser);
+        boolean connexion = connection.connexionSQL(pseudoUser, passwordUser);
 
         String check = request.getParameter("box");
         if (check != null) {
@@ -40,6 +43,7 @@ public class ConnexionServlet extends HttpServlet {
         if (connexion) {
             HttpSession session = request.getSession();
             session.setAttribute("verifconnection", true);
+            session.setAttribute("id", idUtilisateur);
             System.out.println(session.getAttribute("verifconnection"));
             request.getRequestDispatcher("WEB-INF/indexConnecter.jsp").forward(request, response);
         } else {
