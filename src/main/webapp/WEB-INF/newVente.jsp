@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LAROGE
-  Date: 07/07/2022
-  Time: 14:43
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -59,7 +53,7 @@
         </div>
         <div>
             <label for="article">Code postal : </label>
-            <input type="number" name="article" id="codePostal">
+            <input type="text" name="article" id="codePostal">
         </div>
         <div>
             <label for="article">Ville : </label>
@@ -67,11 +61,8 @@
         </div>
     </fieldset>
     </p>
-    <a href="">Enregistrer</a>
-    <a href="${pageContext.request.contextPath}/index">annuler</a>
-
 </form>
-</div>
-
+<a href="${pageContext.request.contextPath}/NewVente"><input type="submit" value="">Enregistrer</a>
+<a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
 </body>
 </html>

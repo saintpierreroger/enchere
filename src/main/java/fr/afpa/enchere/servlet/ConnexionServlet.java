@@ -1,12 +1,15 @@
 package fr.afpa.enchere.servlet;
 
 
+import fr.afpa.enchere.bo.UtilisateursArticles_Vendus;
+import fr.afpa.enchere.dal.ArticleSQL;
 import fr.afpa.enchere.dal.RequeteSQL;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @WebServlet("/connexionservlet")
@@ -41,6 +44,10 @@ public class ConnexionServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("verifconnection", true);
             System.out.println(session.getAttribute("verifconnection"));
+            // Utilisation de la DAL
+            ArticleSQL articleSQL = new ArticleSQL();
+            // Selection des Articles en enchère
+            request.setAttribute("articles", articleSQL.selectAll1());
             request.getRequestDispatcher("WEB-INF/indexConnecter.jsp").forward(request, response);
         } else {
 

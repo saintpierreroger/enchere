@@ -11,16 +11,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/index")
-public class Index extends HttpServlet {
+@WebServlet("/indexConnecter")
+public class IndexConnecter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Utilisation de la DAL
         ArticleSQL articleSQL = new ArticleSQL();
         // Selection des Articles en enchère
         request.setAttribute("articles", articleSQL.selectAll1());
-        // Envoi à index.jsp
-        request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/indexConnecter.jsp").forward(request, response);
     }
 
     @Override
@@ -35,8 +34,8 @@ public class Index extends HttpServlet {
         String filter = request.getParameter("no_categorie");
         // affichage de la recherche
         request.setAttribute("articles", articles);
-        // Envoi à index.jsp
-        request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+        // Envoi à indexConnecter.jsp
+        request.getRequestDispatcher("WEB-INF/indexConnecter.jsp").forward(request, response);
 
     }
 }

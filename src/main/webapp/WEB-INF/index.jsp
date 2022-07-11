@@ -41,8 +41,8 @@
                 <h5 class="card-title">${article.nom_article}</h5>
             </div>
             <ul class="list-group list-group-flush">
+                <li class="list-group-item">${article.prix_vente}</li>
                 <li class="list-group-item">${article.date_fin_encheres}</li>
-                <li class="list-group-item">${article.nom_article}</li>
             </ul>
             <div class="card-body">
                 <a href="#" class="card-link">${article.pseudo}</a>
