@@ -27,7 +27,7 @@ public class ArticleSQL {
             " ON articles_vendus.no_utilisateur = utilisateurs.no_utilisateur " +
             " INNER JOIN categories " +
             " ON articles_vendus.no_categorie = categories.no_categorie" +
-            " WHERE articles_vendus.nom_article LIKE ? & categories.no_categorie LIKE ?";
+            " WHERE articles_vendus.nom_article LIKE ? AND categories.no_categorie LIKE ?";
 
     public List<Articles_Vendus> selectAll() {
         List<Articles_Vendus> listeArticles = new ArrayList<>();

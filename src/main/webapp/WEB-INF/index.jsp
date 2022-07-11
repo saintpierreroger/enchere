@@ -22,7 +22,7 @@
                aria-label="Le nom de l'article contient">
         <div>
             <label for="filter">Catégorie : </label>
-            <select name="filter" id="filter">
+            <select name="no_categorie" id="filter">
                 <option value="1">Informatique</option>
                 <option value="2">Ameublement</option>
                 <option value="3">Vêtement</option>
