@@ -3,6 +3,7 @@ package fr.afpa.enchere.servlet;
 
 import fr.afpa.enchere.bo.UtilisateursArticles_Vendus;
 import fr.afpa.enchere.dal.ArticleSQL;
+import fr.afpa.enchere.bo.Utilisateurs;
 import fr.afpa.enchere.dal.RequeteSQL;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @WebServlet("/connexionservlet")
 public class ConnexionServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,6 +45,7 @@ public class ConnexionServlet extends HttpServlet {
         if (connexion) {
             HttpSession session = request.getSession();
             session.setAttribute("verifconnection", true);
+            session.setAttribute("id", idUtilisateur);
             System.out.println(session.getAttribute("verifconnection"));
             // Utilisation de la DAL
             ArticleSQL articleSQL = new ArticleSQL();

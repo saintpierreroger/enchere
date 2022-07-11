@@ -14,14 +14,16 @@ public class Utilisateurs {
     private String mail;
     private String telephone;
     private String rue;
-    private int codePostal;
+    private String codePostal;
     private String ville;
     private String motDePasse;
     private int credit;
     private boolean administrateur;
 
     //constructeur pour la methode "modifier le compte".
-    public Utilisateurs(String pseudo, String nom, String prenom, String mail, String telephone, String rue, int codePostal, String ville) {
+
+
+    public Utilisateurs(String pseudo, String nom, String prenom, String mail, String telephone, String rue, String codePostal, String ville) {
         this.pseudo = pseudo;
         this.nom = nom;
         this.prenom = prenom;
@@ -40,4 +42,6 @@ public class Utilisateurs {
     public Utilisateurs(int noUtilisateur) {
         this.noUtilisateur = noUtilisateur;
     }
+
+
 }

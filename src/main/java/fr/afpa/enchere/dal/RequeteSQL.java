@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class RequeteSQL {
 
 
-    public void insertCreaCompteSQL(String pseudo, String nom, String prenom, String email, String telephone, String rue, int codePostal, String ville, String motDePasse, String confirmPassWord) {
+    public void insertCreaCompteSQL(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, String confirmPassWord) {
         //Cette methode sert a inserer un utilisateur dans la BDD
         try {
             Connection connection = ConnectionProvider.getConnection();
@@ -22,7 +22,7 @@ public class RequeteSQL {
             pstmt.setString(4, email);
             pstmt.setString(5, telephone);
             pstmt.setString(6, rue);
-            pstmt.setInt(7, codePostal);
+            pstmt.setString(7, codePostal);
             pstmt.setString(8, ville);
             pstmt.setString(9, motDePasse);
             pstmt.executeUpdate();
@@ -121,7 +121,7 @@ public class RequeteSQL {
             pstmt.setString(5, user.getTelephone());
             pstmt.setString(6, user.getRue());
             pstmt.setString(7, user.getVille());
-            pstmt.setInt(8, user.getCodePostal());
+            pstmt.setString(8, user.getCodePostal());
             pstmt.setString(9, user.getMotDePasse());
             pstmt.setInt(10, idUser);
             pstmt.executeUpdate();
@@ -171,6 +171,54 @@ public class RequeteSQL {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 idUser = rs.getInt("no_utilisateur");
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return idUser;
+    }
+
+
+    public Utilisateurs profilUtilisateur(int idUser) {
+        Utilisateurs utilisateur = null;
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "SELECT pseudo,nom ,prenom,email,telephone,rue,code_postal,ville FROM utilisateurs WHERE no_utilisateur = ?");
+            pstmt.setInt(1, idUser);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String pseudo = rs.getString("pseudo");
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                String email = rs.getString("email");
+                String telephone = rs.getString("telephone");
+                String rue = rs.getString("rue");
+                String codePostal = rs.getString("code_postal");
+                String ville = rs.getString("ville");
+                utilisateur = new Utilisateurs(pseudo, nom, prenom, email, telephone, rue, codePostal, ville);
+            }
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return utilisateur;
+    }
+
+    public int id(String pseudo) {
+        int idUser = 0;
+
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur FROM utilisateurs WHERE pseudo = ?");
+            pstmt.setString(1, pseudo);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                idUser = rs.getInt("no_utilisateur");
+
             }
             connection.close();
         } catch (SQLException e) {
