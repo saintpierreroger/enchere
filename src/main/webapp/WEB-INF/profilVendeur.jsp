@@ -5,6 +5,16 @@
     <title>profilVendeur</title>
 </head>
 <body>
+<h1>Profil Vendeur</h1>
+
+<p>Pseudo :${utilisateurs.pseudo}</p>
+<p>Nom : ${utilisateurs.nom}</p>
+<p>Prenom : ${utilisateurs.prenom}</p>
+<p>Email : ${utilisateurs.mail}</p>
+<p>Téléphone : ${utilisateurs.telephone}</p>
+<p>Rue : ${utilisateurs.rue}</p>
+<p>Code Postal : ${utilisateurs.codePostal}</p>
+<p>Ville : ${utilisateurs.ville}</p>
 
 </body>
 </html>

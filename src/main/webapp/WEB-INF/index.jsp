@@ -48,7 +48,8 @@
                     <li class="list-group-item">${article.date_fin_encheres}</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">${article.pseudo}</a>
+                    <a href="${pageContext.request.contextPath}/ProfilVendeur?id=${article.no_utilisateur}"
+                       class="card-link">${article.pseudo}</a>
                 </div>
             </div>
         </c:forEach>

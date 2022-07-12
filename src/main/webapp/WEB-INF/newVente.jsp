@@ -67,8 +67,9 @@
             </div>
         </c:forEach>
     </fieldset>
+    <a href="${pageContext.request.contextPath}/DetailVente">Enregistrer</a>
+    <a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
 </form>
-<a href="${pageContext.request.contextPath}/NewVente">Enregistrer</a>
-<a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
+
 </body>
 </html>

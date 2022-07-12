@@ -15,7 +15,8 @@ public class EnchereSQL {
             "no_article, date_enchere, montant_enchere " +
             "FROM encheres";
     private static final String INSERT_ENCHERE = "INSERT INTO encheres(no_utilisateur, no_article, date_enchere, montant_enchere)" +
-            " VALUES (?, ?, ?, ?)";
+            " VALUES (?, ?, ?, ?) ";
+
 
     public List<Encheres> selectAll() {
         List<Encheres> listeEncheres = new ArrayList<>();

@@ -13,5 +13,6 @@ public class UtilisateursArticles_Vendus {
     private int prix_vente;
     private Date date_fin_encheres;
     private String pseudo;
+    private String no_utilisateur;
 
 }
