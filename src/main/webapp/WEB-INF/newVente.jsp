@@ -7,13 +7,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="newVente.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-
+<h1> Nouvelle vente </h1>
 <form action="NewVente" method="post">
     <p>
         <label for="article">Article : </label>
@@ -25,13 +25,18 @@
         <textarea name="description" id="desciption" rows="10" cols="30"></textarea>
     </p>
     <p>
+    <div>
         <label for="categorie">Catégorie : </label>
         <select name="categorie" id="categorie" size="1">
             <optgroup label="categorie">
-                <option value="">
-                <option value="">
+                <option value="">Informatique</option>
+                <option value="">Ameublement</option>
+                <option value="">Vêtement</option>
+                <option value="">Sport&Loisirs</option>
             </optgroup>
         </select>
+    </div>
+
     </p>
     <label> Photo de l'article </label>
     <input type="file" id="photo">
