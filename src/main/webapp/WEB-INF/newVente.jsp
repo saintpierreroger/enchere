@@ -27,7 +27,7 @@
     <p>
         <label for="categorie">Catégorie : </label>
         <select name="categorie" id="categorie" size="1">
-            <optgroup label="categorie>">
+            <optgroup label="categorie">
                 <option value="">
                 <option value="">
             </optgroup>
@@ -46,23 +46,29 @@
     </p>
     <p>
     <fieldset>
-        <legend>Retrait</legend>
-        <div>
-            <label for="article">Rue : </label>
-            <input type="text" name="article" id="rue">
-        </div>
-        <div>
-            <label for="article">Code postal : </label>
-            <input type="text" name="article" id="codePostal">
-        </div>
-        <div>
-            <label for="article">Ville : </label>
-            <input type="text" name="article" id="ville">
-        </div>
+        <c:forEach var="adresseRetrait" items="${adresse}">
+            <legend>Retrait</legend>
+            <div>
+                <label for="article">Rue : </label>
+                <input placeholder="${adresseRetrait.rue}" aria-label="${adresseRetrait.rue}" type="text" name="article"
+                       id="rue">
+            </div>
+            <div>
+                <label for="article">Code postal : </label>
+                <input placeholder="${adresseRetrait.codePostal}" aria-label="${adresseRetrait.codePostal}" type="text"
+                       name="article"
+                       id="codePostal">
+            </div>
+            <div>
+                <label for="article">Ville : </label>
+                <input placeholder="${adresseRetrait.ville}" aria-label="${adresseRetrait.ville}" type="text"
+                       name="article"
+                       id="ville">
+            </div>
+        </c:forEach>
     </fieldset>
-    </p>
 </form>
-<a href="${pageContext.request.contextPath}/NewVente"><input type="submit" value="">Enregistrer</a>
+<a href="${pageContext.request.contextPath}/NewVente">Enregistrer</a>
 <a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
 </body>
 </html>

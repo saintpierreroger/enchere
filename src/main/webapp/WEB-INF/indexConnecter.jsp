@@ -13,10 +13,10 @@
 <body>
 <h1>Liste des enchères</h1>
 
-/// <a href="${pageContext.request.contextPath}/indexConnecter">Enchères</a>
-/// <a href="${pageContext.request.contextPath}/NewVente">Vendre un article</a>
-/// <a href="${pageContext.request.contextPath}/profilutilisateur">Mon profil</a>
-/// <a href="${pageContext.request.contextPath}/index">Déconnexion</a>
+<a href="${pageContext.request.contextPath}/indexConnecter">Enchères</a>
+<a href="${pageContext.request.contextPath}/NewVente">Vendre un article</a>
+<a href="${pageContext.request.contextPath}/profilutilisateur">Mon profil</a>
+<a href="${pageContext.request.contextPath}/index">Déconnexion</a>
 
 <div class="container-fluid">
     <h2>Filtres :</h2>
