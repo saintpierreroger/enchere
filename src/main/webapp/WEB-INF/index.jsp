@@ -44,14 +44,17 @@
             <div class="card" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">${article.nom_article}</h5>
+                    <h5 class="card-title"><a
+                            href="${pageContext.request.contextPath}/DetailVente?idArticle=${article.no_article}">${article.nom_article}</a>
+                    </h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">${article.prix_vente}</li>
                     <li class="list-group-item">${article.date_fin_encheres}</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">${article.pseudo}</a>
+                    <a href="${pageContext.request.contextPath}/ProfilVendeur?id=${article.no_utilisateur}"
+                       class="card-link">${article.pseudo}</a>
                 </div>
             </div>
         </c:forEach>

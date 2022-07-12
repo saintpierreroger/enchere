@@ -19,7 +19,7 @@ public class Index extends HttpServlet {
         ArticleSQL articleSQL = new ArticleSQL();
         // Selection des Articles en enchère
         request.setAttribute("articles", articleSQL.selectAll1());
-        // Envoi à index.jsp
+        // Envoi à index.jsp pour affichage
         request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
     }
 

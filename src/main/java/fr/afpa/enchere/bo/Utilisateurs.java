@@ -60,4 +60,10 @@ public class Utilisateurs {
         this.codePostal = codePostal;
         this.motDePasse = newPassword;
     }
+
+    public Utilisateurs(String rue, String codePostal, String ville) {
+        this.rue = rue;
+        this.codePostal = codePostal;
+        this.ville = ville;
+    }
 }

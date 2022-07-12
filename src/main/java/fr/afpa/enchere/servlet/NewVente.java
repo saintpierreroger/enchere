@@ -1,5 +1,6 @@
 package fr.afpa.enchere.servlet;
 
+import fr.afpa.enchere.dal.UtilisateurSQL;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -13,6 +14,14 @@ import java.util.Date;
 public class NewVente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Appel de la session
+        HttpSession session = request.getSession();
+        // Utilisation de l'id stockée en session (donc de l'user connecté)
+        int id = (int) session.getAttribute("id");
+        // Utilisation de la DAL
+        UtilisateurSQL utilisateurSQL = new UtilisateurSQL();
+        // Selection de l'utilisateur en focntion de son ID et affichage de l'adresse
+        request.setAttribute("adresse", utilisateurSQL.selectById(id));
         request.getRequestDispatcher("WEB-INF/newVente.jsp").forward(request, response);
     }
 

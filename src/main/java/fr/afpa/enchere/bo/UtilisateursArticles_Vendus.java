@@ -9,9 +9,11 @@ import java.util.Date;
 @AllArgsConstructor
 //création de la classe qui permet de faire le constructeur pour l'inner join de la requête d'affichage des enchères
 public class UtilisateursArticles_Vendus {
+    private int no_article;
     private String nom_article;
     private int prix_vente;
     private Date date_fin_encheres;
     private String pseudo;
+    private String no_utilisateur;
 
 }

@@ -16,12 +16,14 @@ public class ArticleSQL {
             " prix_vente, no_utilisateur, no_categorie " +
             " FROM articles_vendus";
 
-    private static final String SELECT_ALL1 = "SELECT nom_article, prix_vente, date_fin_encheres, pseudo" +
+    private static final String SELECT_ALL1 = "SELECT no_article, nom_article, prix_vente, date_fin_encheres, pseudo," +
+            " utilisateurs.no_utilisateur" +
             " FROM articles_vendus " +
             " INNER JOIN utilisateurs " +
             "ON articles_vendus.no_utilisateur = utilisateurs.no_utilisateur";
 
-    private static final String SELECT_BY_NOM_ARTICLE_ET_NO_CATEGORIE = "SELECT nom_article, prix_vente, date_fin_encheres, pseudo" +
+    private static final String SELECT_BY_NOM_ARTICLE_ET_NO_CATEGORIE = "SELECT no_article, nom_article, prix_vente, date_fin_encheres, " +
+            "pseudo, utilisateurs.no_utilisateur" +
             " FROM articles_vendus " +
             " INNER JOIN utilisateurs " +
             " ON articles_vendus.no_utilisateur = utilisateurs.no_utilisateur " +
@@ -50,7 +52,7 @@ public class ArticleSQL {
             PreparedStatement pstmt = connection.prepareStatement(SELECT_ALL1);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                listeArticles.add(new UtilisateursArticles_Vendus(rs.getString("nom_article"), rs.getInt("prix_vente"), rs.getDate("date_fin_encheres"), rs.getString("pseudo")));
+                listeArticles.add(new UtilisateursArticles_Vendus(rs.getInt("no_article"), rs.getString("nom_article"), rs.getInt("prix_vente"), rs.getDate("date_fin_encheres"), rs.getString("pseudo"), rs.getString("no_utilisateur")));
             }
             connection.close();
         } catch (Exception e) {
@@ -67,7 +69,7 @@ public class ArticleSQL {
             pstmt.setInt(2, no_categorie);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                listeArticles.add(new UtilisateursArticles_Vendus(rs.getString("nom_article"), rs.getInt("prix_vente"), rs.getDate("date_fin_encheres"), rs.getString("pseudo")));
+                listeArticles.add(new UtilisateursArticles_Vendus(rs.getInt("no_article"), rs.getString("nom_article"), rs.getInt("prix_vente"), rs.getDate("date_fin_encheres"), rs.getString("pseudo"), rs.getString("no_utilisateur")));
             }
             connection.close();
         } catch (Exception e) {

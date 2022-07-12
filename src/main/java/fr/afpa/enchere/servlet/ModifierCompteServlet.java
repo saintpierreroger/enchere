@@ -16,6 +16,7 @@ import java.io.IOException;
 public class ModifierCompteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.getRequestDispatcher("WEB-INF/modifierProfil.jsp").forward(request, response);
     }
 
