@@ -18,7 +18,6 @@ public class ProfilUtilisateurServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.setAttribute("verifconnection", true);
-
         RequeteSQL afficherProfil = new RequeteSQL();
         System.out.println(session.getAttribute("id"));
         Utilisateurs utilisateurs = afficherProfil.profilUtilisateur((Integer) session.getAttribute("id"));

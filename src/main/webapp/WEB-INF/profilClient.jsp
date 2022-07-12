@@ -14,17 +14,21 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-<p>Pseudo :${utilisateurs.pseudo}</p>
-<p>Nom : ${utilisateurs.nom}</p>
-<p>Prenom : ${utilisateurs.prenom}</p>
-<p>Email : ${utilisateurs.mail}</p>
-<p>Téléphone : ${utilisateurs.telephone}</p>
-<p>Rue : ${utilisateurs.rue}</p>
-<p>Code Postal : ${utilisateurs.codePostal}</p>
-<p>Ville : ${utilisateurs.ville}</p>
-<a href="${pageContext.request.contextPath}/modifierCompte">Modifier</a>
+<div class="profil">
+    <p class="pseudo">Pseudo : ${utilisateurs.pseudo}</p>
+    <p>Nom : ${utilisateurs.nom}</p>
+    <p>Prenom : ${utilisateurs.prenom}</p>
+    <p>Email : ${utilisateurs.mail}</p>
+    <p>Téléphone : ${utilisateurs.telephone}</p>
+    <p>Rue : ${utilisateurs.rue}</p>
+    <p>Code Postal : ${utilisateurs.codePostal}</p>
+    <p>Ville : ${utilisateurs.ville}</p>
+</div>
+<a href="${pageContext.request.contextPath}/modifierCompte" class="modifier">Modifier</a>
+<a href="${pageContext.request.contextPath}/indexConnecter" class="modifier">Retour</a>
 </body>
 </html>

@@ -62,7 +62,7 @@
     </fieldset>
     </p>
 </form>
-<a href="${pageContext.request.contextPath}/NewVente"><input type="submit" value="">Enregistrer</a>
+<a href="${pageContext.request.contextPath}/NewVente"><input type="submit">Enregistrer</a>
 <a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
 </body>
 </html>

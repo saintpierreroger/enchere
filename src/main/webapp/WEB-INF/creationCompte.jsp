@@ -19,41 +19,43 @@
     <title>Document</title>
 </head>
 <body>
+<a href="indexConnecter"><img src="media/img/logoEnchere.png" alt="logo" class="logo"></a>
+
 <!--formulaire d'inscription--->
 <h2 class="titreProfil">Mon profil</h2>
 <div class="formInscript">
     <form action="compteServlet" method="post">
         <div>
-            <label for="pseudo">Pseudo : </label>
+            <label for="pseudo" class="labform">Pseudo :</label>
             <input type="text" name="pseudo" id="pseudo">
-            <label for="nom">Nom : </label>
+            <label for="nom" class="labform">Nom :</label>
             <input type="text" name="nom" id="nom">
         </div>
         <div>
-            <label for="prenom">Prénom :</label>
+            <label for="prenom" class="labform">Prénom :</label>
             <input type="text" name="prenom" id="prenom">
-            <label for="mail">Mail :</label>
+            <label for="mail" class="labform">Mail :</label>
             <input type="email" name="mail" id="mail">
         </div>
         <div>
-            <label for="tel">Téléphone : </label>
+            <label for="tel" class="labform">Téléphone :</label>
             <input type="tel" name="tel" id="tel">
-            <label for="rue">Rue : </label>
+            <label for="rue" class="labform">Rue :</label>
             <input type="text" name="rue" id="rue">
         </div>
         <div>
-            <label for="codepostal">Code Postal :</label>
+            <label for="codepostal" class="labform">Code Postal :</label>
             <input type="text" name="codepostal" id="codepostal">
-            <label for="ville">Ville :</label>
+            <label for="ville" class="labform">Ville :</label>
             <input type="text" name="ville" id="ville">
         </div>
         <div>
-            <label for="password">Mot de passe :</label>
+            <label for="password" class="labform">Mot de passe :</label>
             <input type="password" name="password" id="password">
-            <label for="confirm">Confirmation :</label>
+            <label for="confirm" class="labform">Confirmation :</label>
             <input type="password" name="confirm" id="confirm">
         </div>
-        <input type="submit" value="Créer" name="creer">
+        <input type="submit" value="Créer" name="creer" class="button">
     </form>
 </div>
 <div>
