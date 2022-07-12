@@ -23,25 +23,22 @@ public class ModifierCompteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         RequeteSQL modifierProfil = new RequeteSQL();
-        Utilisateurs utilisateurs = modifierProfil.profilUtilisateur((Integer) session.getAttribute("id"));
-
+        Utilisateurs user = new Utilisateurs();
         int id = (int) session.getAttribute("id");
         String pseudo = request.getParameter("pseudo");
         String prenom = request.getParameter("prenom");
         String nom = request.getParameter("nom");
-        String email = request.getParameter("email");
-        String telephone = request.getParameter("telephone");
+        String email = request.getParameter("mail");
+        String telephone = request.getParameter("tel");
         String rue = request.getParameter("rue");
         String ville = request.getParameter("ville");
-        String codePostal = request.getParameter("codePostal");
-        String newPassword = request.getParameter("newPassword");
+        String codePostal = request.getParameter("codepostal");
+        String newPassword = request.getParameter("newpassword");
         String confirmNewPassword = request.getParameter("confirmNewPassword");
-
-
-        request.getRequestDispatcher("WEB-INF/profilClient.jsp").forward(request, response);
-
-
+        user = new Utilisateurs(id, pseudo, prenom, nom, email, telephone, rue, ville, codePostal, newPassword);
+        modifierProfil.modifierProfil(id, pseudo, prenom, nom, email, telephone, rue, ville, codePostal, newPassword);
+        request.setAttribute("utilisateur", user);
+        request.getRequestDispatcher("WEB-INF/profilClientModifier.jsp").forward(request, response);
     }
-
 }
 
