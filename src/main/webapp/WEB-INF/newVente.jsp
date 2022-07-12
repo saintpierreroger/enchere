@@ -29,10 +29,10 @@
         <label for="categorie">Catégorie : </label>
         <select name="categorie" id="categorie" size="1">
             <optgroup label="categorie">
-                <option value="">Informatique</option>
-                <option value="">Ameublement</option>
-                <option value="">Vêtement</option>
-                <option value="">Sport&Loisirs</option>
+                <option value="1">Informatique</option>
+                <option value="2">Ameublement</option>
+                <option value="3">Vêtement</option>
+                <option value="4">Sport&Loisirs</option>
             </optgroup>
         </select>
     </div>
