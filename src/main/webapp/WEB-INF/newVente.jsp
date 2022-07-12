@@ -51,26 +51,24 @@
     </p>
     <p>
     <fieldset>
-        <c:forEach var="adresseRetrait" items="${adresse}">
-            <legend>Retrait</legend>
-            <div>
-                <label for="article">Rue : </label>
-                <input placeholder="${adresseRetrait.rue}" aria-label="${adresseRetrait.rue}" type="text" name="article"
-                       id="rue">
-            </div>
-            <div>
-                <label for="article">Code postal : </label>
-                <input placeholder="${adresseRetrait.codePostal}" aria-label="${adresseRetrait.codePostal}" type="text"
-                       name="article"
-                       id="codePostal">
-            </div>
-            <div>
-                <label for="article">Ville : </label>
-                <input placeholder="${adresseRetrait.ville}" aria-label="${adresseRetrait.ville}" type="text"
-                       name="article"
-                       id="ville">
-            </div>
-        </c:forEach>
+        <legend>Retrait</legend>
+        <div>
+            <label for="article">Rue : </label>
+            <input placeholder="${rue.rue}" aria-label="${rue.rue}" type="text" name="article"
+                   id="rue">
+        </div>
+        <div>
+            <label for="article">Code postal : </label>
+            <input placeholder="${codePostal.codePostal}" aria-label="${codePostal.codePostal}" type="text"
+                   name="article"
+                   id="codePostal">
+        </div>
+        <div>
+            <label for="article">Ville : </label>
+            <input placeholder="${ville.ville}" aria-label="${ville.ville}" type="text"
+                   name="article"
+                   id="ville">
+        </div>
     </fieldset>
     <a href="${pageContext.request.contextPath}/DetailVente">Enregistrer</a>
     <a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
