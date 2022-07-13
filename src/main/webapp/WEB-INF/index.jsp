@@ -7,13 +7,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/index.css">
     <title>index</title>
 </head>
 <body>
 <!-- Lien pour se connecter ou s'inscrire, renvoi vers la view home -->
-<a href="${pageContext.request.contextPath}/connexionservlet" id="lien">S'inscire - Se connecter</a>
+<a href="${pageContext.request.contextPath}/connexionservlet" class="lien">S'inscire - Se connecter</a>
+<a href=""><img src="media/img/logoEnchere.png" alt="logo" class="logo"></a>
+
 <h1>Liste des enchères</h1>
 <!-- Recherche à partir d'un mot clé du nom de l'article et du numéro de catégorie -->
 <div class="container-fluid">

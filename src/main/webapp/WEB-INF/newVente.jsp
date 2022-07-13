@@ -7,7 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="newVente.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Document</title>
@@ -51,24 +51,26 @@
     </p>
     <p>
     <fieldset>
-        <legend>Retrait</legend>
-        <div>
-            <label for="article">Rue : </label>
-            <input placeholder="${rue.rue}" aria-label="${rue.rue}" type="text" name="article"
-                   id="rue">
-        </div>
-        <div>
-            <label for="article">Code postal : </label>
-            <input placeholder="${codePostal.codePostal}" aria-label="${codePostal.codePostal}" type="text"
-                   name="article"
-                   id="codePostal">
-        </div>
-        <div>
-            <label for="article">Ville : </label>
-            <input placeholder="${ville.ville}" aria-label="${ville.ville}" type="text"
-                   name="article"
-                   id="ville">
-        </div>
+        <c:forEach var="adresseRetrait" items="${adresse}">
+            <legend>Retrait</legend>
+            <div>
+                <label for="article">Rue : </label>
+                <input placeholder="${adresseRetrait.rue}" aria-label="${adresseRetrait.rue}" type="text" name="article"
+                       id="rue">
+            </div>
+            <div>
+                <label for="article">Code postal : </label>
+                <input placeholder="${adresseRetrait.codePostal}" aria-label="${adresseRetrait.codePostal}" type="text"
+                       name="article"
+                       id="codePostal">
+            </div>
+            <div>
+                <label for="article">Ville : </label>
+                <input placeholder="${adresseRetrait.ville}" aria-label="${adresseRetrait.ville}" type="text"
+                       name="article"
+                       id="ville">
+            </div>
+        </c:forEach>
     </fieldset>
     <a href="${pageContext.request.contextPath}/DetailVente">Enregistrer</a>
     <a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>

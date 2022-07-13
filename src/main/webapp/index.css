@@ -1,9 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+h1 {
+    font-family: 'Anton';
+}
+
+body {
+    background: linear-gradient(160deg, #FCF8E8, #7cdede);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+
+}
+
+a:hover {
+    color: #f503b0;
+
+}
 
 h1 {
     display: flex;
     justify-content: center;
-    font-family: 'Roboto';
     font-weight: 400;
     text-decoration: underline;
 }
@@ -14,13 +33,16 @@ h2 {
     text-decoration: underline;
     font-size: 2em;
     margin-top: 4em;
+    width: 6em;
 }
 
-#lien {
+.lien {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     font-family: 'Roboto';
-    font-weight: 100;
+    font-weight: bold;
+    margin: 1em;
+
 }
 
 #encheres {
@@ -43,4 +65,20 @@ h2 {
 #categorie {
     display: flex;
     align-content: flex-start;
+}
+
+.logo {
+    width: 15em;
+    animation: jump 2s;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+
+    }
+
 }

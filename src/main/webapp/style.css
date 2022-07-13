@@ -1,8 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+h1 {
+    font-family: 'Anton';
+}
+
+body {
+    background: linear-gradient(160deg, #FCF8E8, #7cdede);
+    font-size: 1.2em;
+}
+
+h2 {
+    width: 5em;
+}
+
+.logo {
+    width: 15em;
+}
+
+.logoIndex {
+    width: 15em;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+
+}
+
+a:hover {
+    color: #f503b0;
+
+}
+
 .addAccount {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
+
+}
+
+.connexion {
+    margin: 1em 4.5em;
+
+}
+
+.labform {
+    width: 12em;
+    margin-top: 1em;
+}
+
+.button {
+    margin-top: 2em;
+    margin-left: 6.5em;
+    border-radius: 1em;
+    background: #F9F2ED;
+    font-weight: bold;
+    font-size: 1em;
+    width: 8em;
+    height: 2em;
+    animation: bounce 1s;
+}
+
+.buttonCreer {
+    margin-top: 2em;
+    margin-left: -0.5em;
+    border-radius: 1em;
+    background: #F9F2ED;
+    font-weight: bold;
+    font-size: 1em;
+    width: 8em;
+    height: 2em;
+    animation: bounce 1s;
+}
+
+.btnSupprimer {
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 2em;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateX(-10%);
+    }
+    10% {
+        transform: translateX(0%);
+    }
+    20% {
+        transform: translateX(10%);
+
+    }
+}
+
+.password {
+    margin: 1.5em 6.2em;
+}
+
+.box {
+    margin: 1em 6em;
+}
+
+.creacompte {
+    text-align: center;
 }
 
 .formInscript {
@@ -14,3 +119,89 @@
     text-align: center;
 }
 
+.btnAnnuler {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.btnAnnuler:hover {
+    color: #989494;
+}
+
+
+.title {
+    text-align: center;
+    margin-top: 1em;;
+}
+
+.recherche {
+    width: 15em;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: end;
+    align-items: center;
+    background: #7cdede;
+    height: 4em;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #590696;
+}
+
+.trade {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2em;
+    margin-bottom: 3em;
+}
+
+.titreTrade {
+    text-decoration: underline;
+}
+
+.profil {
+    text-align: center;
+}
+
+.modifier {
+    color: black;
+    font-weight: bold;
+}
+
+.pseudo {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 425px) {
+    .menu {
+        font-size: 15px;
+    }
+
+    .logoIndex {
+        display: flex;
+        justify-content: center;
+    }
+
+    .trade {
+        font-size: 2%;
+        margin-top: 15%;
+        margin-bottom: 15%;
+    }
+
+    .recherche {
+        width: 15em;
+    }
+
+    .card {
+        text-align: center;
+        margin-left: 15%;
+    }
+}

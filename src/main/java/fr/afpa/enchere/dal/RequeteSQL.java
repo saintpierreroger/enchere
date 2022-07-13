@@ -94,21 +94,21 @@ public class RequeteSQL {
     }
 
     //METHODE FAISANT APPEL A LA REQUETE SQL UPDATE POUR MODIFIER LE PROFIL UTILISATEUR.
-    public void modifierProfil(int idUser,String pseudo, String prenom, String nom, String email ,String telephone, String rue , String ville , String codePostal, String motDePasse) {
+    public void modifierProfil(int idUser, String pseudo, String prenom, String nom, String email, String telephone, String rue, String ville, String codePostal, String motDePasse) {
 
         try {
             Connection connection = ConnectionProvider.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(
                     "UPDATE utilisateurs SET pseudo = ? , prenom = ? ,nom = ? ,email = ?, telephone = ?, rue = ?, ville = ?, code_postal = ? ,mot_de_passe = ? WHERE no_utilisateur = ?");
             pstmt.setString(1, pseudo);
-            pstmt.setString(2, prenom );
+            pstmt.setString(2, prenom);
             pstmt.setString(3, nom);
             pstmt.setString(4, email);
-            pstmt.setString(5,telephone);
+            pstmt.setString(5, telephone);
             pstmt.setString(6, rue);
-            pstmt.setString(7,ville );
-            pstmt.setString(8,codePostal);
-            pstmt.setString(9,motDePasse );
+            pstmt.setString(7, ville);
+            pstmt.setString(8, codePostal);
+            pstmt.setString(9, motDePasse);
             pstmt.setInt(10, idUser);
             pstmt.executeUpdate();
 
@@ -118,22 +118,8 @@ public class RequeteSQL {
         }
     }
 
-    public void supprimerCompte(Utilisateurs user) {
-        int idUser = 0;
-        try {
-            Connection connection = ConnectionProvider.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement(
-                    "SELECT no_utilisateur FROM utilisateurs WHERE pseudo = ? and mot_de_passe = ?");
-            pstmt.setString(1, user.getPseudo());
-            pstmt.setString(2, user.getMotDePasse());
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                idUser = rs.getInt("no_utilisateur");
-            }
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+    public void supprimerCompte(int idUser) {
+
         try {
             Connection connection = ConnectionProvider.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(

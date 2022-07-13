@@ -16,23 +16,20 @@ import java.io.IOException;
 public class SupprimerCompteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("").forward(request, response);
+        HttpSession session = request.getSession();
+        RequeteSQL requeteSQL = new RequeteSQL();
+        int id = (int) session.getAttribute("id");
+        requeteSQL.supprimerCompte(id);
+        System.out.println("le compte est delete");
+
+        request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.setAttribute("verifconnection", true);
 
-        RequeteSQL supprimerCompte = new RequeteSQL();
-        RequeteSQL userEnBDD = new RequeteSQL();
+        request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 
-        String motDePasse = request.getParameter("motDepasse");
-        String pseudo = request.getParameter("pseudo");
-        Utilisateurs user = new Utilisateurs(pseudo, motDePasse);
-        if (Integer.parseInt(session.getId()) == userEnBDD.idUtilisateur(user)) {
-            supprimerCompte.supprimerCompte(user);
-            request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
-        }
+
     }
 }

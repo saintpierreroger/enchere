@@ -7,52 +7,86 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-<h1>Liste des enchères</h1>
+<a href="indexConnecter"><img src="media/img/logoEnchere.png" alt="logo" class="logoIndex"></a>
+<div class="menu">
+    <a href="${pageContext.request.contextPath}/indexConnecter">Enchères</a>
+    <a href="${pageContext.request.contextPath}/NewVente">Vendre un article</a>
+    <a href="${pageContext.request.contextPath}/profilutilisateur">Mon profil</a>
+    <a href="${pageContext.request.contextPath}/index">Déconnexion</a>
+</div>
+<h1 class="title">Liste des enchères</h1>
 
-<a href="${pageContext.request.contextPath}/indexConnecter">Enchères</a>
-<a href="${pageContext.request.contextPath}/NewVente">Vendre un article</a>
-<a href="${pageContext.request.contextPath}/profilutilisateur">Mon profil</a>
-<a href="${pageContext.request.contextPath}/index">Déconnexion</a>
 
 <div class="container-fluid">
-    <h2>Filtres :</h2>
-    <form action="${pageContext.request.contextPath}/indexConnecter" method="post" class="d-flex" role="search">
-        <input class="form-control me-2" type="search" name="name" placeholder="Le nom de l'article contient"
-               aria-label="Le nom de l'article contient">
-        <div>
-            <label for="filter">Catégorie : </label>
-            <select name="no_categorie" id="filter">
-                <option value="1">Informatique</option>
-                <option value="2">Ameublement</option>
-                <option value="3">Vêtement</option>
-                <option value="4">Sport&Loisirs</option>
-            </select>
+    <div class="row">
+        <div class="col-12 col-sm-3 d-flex justify-content-center">
+            <div class="col-3 col-sm-3">
+                <h2>Filtres :</h2>
+                <form action="${pageContext.request.contextPath}/indexConnecter" method="post" role="search"
+                      class="recherche">
+                    <input class="form-control" type="search" name="name" placeholder="Le nom de l'article contient"
+                           aria-label="Le nom de l'article contient">
+                    <label for="filter" class="category">Catégorie :</label>
+                    <select name="no_categorie" id="filter" class="category">
+                        <option value="1">Informatique</option>
+                        <option value="2">Ameublement</option>
+                        <option value="3">Vêtement</option>
+                        <option value="4">Sport&Loisirs</option>
+                    </select>
+                    <button class="btn btn-outline-success btn-sm" type="submit">Rechercher</button>
+                </form>
+            </div>
         </div>
-        <div>
-            <fieldset>
-                <legend>
-                    <input type="radio" name="buy">Achats<br>
-                    <input type="checkbox" name="opened">Enchères ouvertes<br>
-                    <input type="checkbox" name="ongoing">Mes enchères en cours<br>
-                    <input type="checkbox" name="pushedBack">Mes enchères remportées<br>
-                </legend>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <input type="radio" name="sells">Mes ventes<br>
-                    <input type="checkbox" name="openedS">Mes ventes en cours<br>
-                    <input type="checkbox" name="ongoingS">Ventes non débutées<br>
-                    <input type="checkbox" name="pushedBackS">ventes terminées<br>
-                </legend>
-            </fieldset>
-        </div>
-        <button class="btn btn-outline-success" type="submit">Rechercher</button>
-    </form>
+    </div>
 </div>
+<div class="trade">
+
+    <legend>
+        <div>
+            <input type="radio" id="buy" name="buy" class="titreTrade">
+            <label for="buy">Mes achats</label>
+        </div>
+        <div>
+            <input type="checkbox" name="opened" id="opened">
+            <label for="opened">Enchères ouvertes</label>
+        </div>
+        <div>
+            <input type="checkbox" name="ongoing" id="ongoing">
+            <label for="ongoing">Mes enchères en cours</label>
+        </div>
+        <div>
+            <input type="checkbox" name="pushedBack" id="pushedBack">
+            <label for="pushedBack">Mes enchères remportées</label>
+        </div>
+    </legend>
+    <legend>
+        <div>
+            <input type="radio" name="buy" id="sell" class="titreTrade">
+            <label for="sell">Mes ventes</label>
+        </div>
+        <div>
+            <input type="checkbox" name="openedS" id="openedS">
+            <label for="openedS">Ventes en cours</label>
+        </div>
+        <div>
+            <input type="checkbox" name="ongoingS" id="ongoingS">
+            <label for="ongoingS">Ventes non débutées</label>
+        </div>
+        <div>
+            <input type="checkbox" name="pushedBackS" id="pushedBackS">
+            <label for="pushedBackS">ventes terminées</label>
+        </div>
+    </legend>
+</div>
+
+
 <div>
     <c:forEach var="article" items="${articles}">
         <div class="card" style="width: 18rem;">
@@ -67,8 +101,7 @@
                 <li class="list-group-item">${article.date_fin_encheres}</li>
             </ul>
             <div class="card-body">
-                <a href="${pageContext.request.contextPath}/ProfilVendeur?id=${article.no_utilisateur}"
-                   class="card-link">${article.pseudo}</a>
+                <a href="#" class="card-link">${article.pseudo}</a>
             </div>
         </div>
     </c:forEach>
