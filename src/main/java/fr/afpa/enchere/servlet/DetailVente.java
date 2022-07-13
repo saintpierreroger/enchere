@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @WebServlet("/DetailVente")
 public class DetailVente extends HttpServlet {
@@ -27,6 +28,7 @@ public class DetailVente extends HttpServlet {
         // création de la variable id dans laquelle je met le no_article (idArticle vient des liens des noms d'article
         //d'index.jsp et indexConnecter
         int id = Integer.parseInt(request.getParameter("idArticle"));
+        request.setAttribute("no_article", id);
         // Selection des détails de la vente (dans différentes tables ==> inner join cf. DetailVenteSQL.java)
         request.setAttribute("detailsVente", detailVenteSQL.select_article(id));
         // Selection de l'adresse
@@ -44,15 +46,16 @@ public class DetailVente extends HttpServlet {
         // Utilisation du no_utilisateur stocké en session
         request.setAttribute("noUtilisateur", session.getAttribute("id"));
         // Récupération des paramètres nécaissaires se trouvant sur detailVente.jsp
-        int no_article = Integer.parseInt(request.getParameter("idArticle"));
-        String date_enchere = request.getParameter("date_enchere");
+        int no_article = Integer.parseInt(request.getParameter("no_articles"));
+        //on récupère la date du jour
+        LocalDate dateDuJour = LocalDate.now();
         int montant_enchere = Integer.parseInt(request.getParameter("montant_enchere"));
-        // On change le type de date_enchere de String en date
-        Date dateAInserer = Date.valueOf(date_enchere);
+        // Convertion de la date du jour en Date
+        Date date_enchere = Date.valueOf(dateDuJour);
         // On change l'id (le no_utilisateur) de string en int
-        int no_utilisateur = Integer.parseInt("id");
+        int no_utilisateur = (int) session.getAttribute("id");
         // Insert en BDD de l'enchère quand la personne clique sur enchérir
-        enchereSQL.insertEnchere(no_utilisateur, no_article, dateAInserer, montant_enchere);
-
+        enchereSQL.insertEnchere(no_utilisateur, no_article, date_enchere, montant_enchere);
+        request.getRequestDispatcher("WEB-INF/indexConnecter.jsp").forward(request, response);
     }
 }

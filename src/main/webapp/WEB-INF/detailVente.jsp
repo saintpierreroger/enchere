@@ -34,6 +34,7 @@ renvoit également sur la page profil du vendeur si on clique dessus -->
 <!-- Cette condition permet de modifier la vente si l'id utilisateur est le même que celui du vendeur
 d'enchérir si on les 2 id sont différents et si les id sont null juste de pouvoir retourner sur la page d'accueil-->
 <form action="${pageContext.request.contextPath}/DetailVente" method="post">
+    <input type="hidden" name="no_articles" value="${no_article}">
     <c:if test="${detailsVente.no_utilisateur == noUtilisateur}">
         <a href="${pageContext.request.contextPath}/NewVente">Modifier</a>
         <a href="${pageContext.request.contextPath}/indexConnecter">Retour</a>
