@@ -51,6 +51,7 @@
     </p>
     <p>
     <fieldset>
+        <!-- Boucle for each qui va afficher l'adresse en fonction de celle du vendeur -->
         <c:forEach var="adresseRetrait" items="${adresse}">
             <legend>Retrait</legend>
             <div>
