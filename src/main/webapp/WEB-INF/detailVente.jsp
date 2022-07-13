@@ -17,16 +17,14 @@
 sur lequel on a cliqué -->
 <form action="${pageContext.request.contextPath}/DetailVente" method="get">
     <img src="" alt="">
-    <p>${detailsVente.nom_article}</p>
-    <label aria-label="Description : ">${detailsVente.description}</label>
-    <label aria-label="Catégorie : ">${detailsVente.libelle}</label>
-    <label aria-label="Meilleure offre : ">${detailsVente.prix_vente}</label>
-    <label aria-label="Mise à prix : ">${detailsVente.prix_initial}</label>
-    <label aria-label="Fin de l'enchère : ">${detailsVente.date_fin_encheres}</label>
-    <label aria-label="Retrait : ">
-        ${adresse.rue}
-        ${adresse.code_postale}${adresse.ville}
-    </label>
+    <h2>${detailsVente.nom_article}</h2>
+    <p>Description : ${detailsVente.description}</p>
+    <p>Catégorie : ${detailsVente.libelle}</p>
+    <p>Meilleure offre : ${detailsVente.prix_vente}</p>
+    <p>Mise à prix : ${detailsVente.prix_initial}</p>
+    <p>Fin de l'enchère : ${detailsVente.date_fin_encheres}</p>
+    <p>Retrait : ${adresse.rue}
+        ${adresse.code_postal}${adresse.ville}</p>
     <!-- Le lien affiche le nom du vendeur de l'article et il
 renvoit également sur la page profil du vendeur si on clique dessus -->
     <label aria-label="Vendeur : "><a
@@ -42,7 +40,7 @@ d'enchérir si on les 2 id sont différents et si les id sont null juste de pouv
     </c:if>
     <c:if test="${detailsVente.no_utilisateur != noUtilisateur}">
         <c:if test="${noUtilisateur != null}">
-            <input id="encheres" type="number">
+            <input name="montant_enchere" id="encheres" type="number">
             <button class="btn btn-outline-success" type="submit">Enchérir</button>
             <a href="${pageContext.request.contextPath}/indexConnecter">Retour</a>
         </c:if>

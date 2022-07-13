@@ -33,7 +33,8 @@ public class Articles_vendusCategoriesUtilisateurs {
 
     }
 
-    public Articles_vendusCategoriesUtilisateurs(String nom_article, String description, String libelle, int prix_vente, int prix_initial, Date date_fin_encheres, String pseudo, int no_utilisateur) {
+    public Articles_vendusCategoriesUtilisateurs(int no_article, String nom_article, String description, String libelle, int prix_vente, int prix_initial, Date date_fin_encheres, String pseudo, int no_utilisateur) {
+        this.no_article = no_article;
         this.nom_article = nom_article;
         this.description = description;
         this.libelle = libelle;

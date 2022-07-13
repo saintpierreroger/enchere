@@ -17,17 +17,17 @@
 <form action="NewVente" method="post">
     <p>
         <label for="article">Article : </label>
-        <input type="text" name="article" id="article">
+        <input type="text" name="nom_article" id="article">
     </p>
     <p>
-        <label for="desciption">Description : </label>
+        <label for="description">Description : </label>
         <br>
-        <textarea name="description" id="desciption" rows="10" cols="30"></textarea>
+        <textarea name="description" id="description" rows="10" cols="30"></textarea>
     </p>
     <p>
     <div>
         <label for="categorie">Catégorie : </label>
-        <select name="categorie" id="categorie" size="1">
+        <select name="no_categorie" id="categorie" size="1">
             <optgroup label="categorie">
                 <option value="1">Informatique</option>
                 <option value="2">Ameublement</option>
@@ -42,12 +42,12 @@
     <input type="file" id="photo">
     <p>
         Mise à prix:
-        <input type="number" min="1" step="1" name="miseAprix">
+        <input type="number" min="1" step="1" name="prix_initial">
     </p>
     <p>
-        Début de l'enchère : <input type="date" name="debut" size="20">
+        Début de l'enchère : <input type="date" name="date_debut_encheres" size="20">
         <br>
-        Fin de l'enchère : <input type="date" name="fin" size="20">
+        Fin de l'enchère : <input type="date" name="date_fin_encheres" size="20">
     </p>
     <p>
     <fieldset>
@@ -56,26 +56,25 @@
             <legend>Retrait</legend>
             <div>
                 <label for="article">Rue : </label>
-                <input placeholder="${adresseRetrait.rue}" aria-label="${adresseRetrait.rue}" type="text" name="article"
+                <input placeholder="${adresseRetrait.rue}" aria-label="${adresseRetrait.rue}" type="text" name="rue"
                        id="rue">
             </div>
             <div>
                 <label for="article">Code postal : </label>
                 <input placeholder="${adresseRetrait.codePostal}" aria-label="${adresseRetrait.codePostal}" type="text"
-                       name="article"
+                       name="code_postal"
                        id="codePostal">
             </div>
             <div>
                 <label for="article">Ville : </label>
                 <input placeholder="${adresseRetrait.ville}" aria-label="${adresseRetrait.ville}" type="text"
-                       name="article"
+                       name="ville"
                        id="ville">
             </div>
         </c:forEach>
     </fieldset>
-    <a href="${pageContext.request.contextPath}/DetailVente">Enregistrer</a>
-    <a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
+    <input type="submit" value="Enregistrer" name="creer" class="button">
 </form>
-
+<a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
 </body>
 </html>

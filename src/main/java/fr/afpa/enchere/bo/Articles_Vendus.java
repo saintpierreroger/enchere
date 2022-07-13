@@ -31,5 +31,18 @@ public class Articles_Vendus {
         this.no_categorie = no_categorie;
     }
 
+    public Articles_Vendus(int no_article, String nom_article, String description, Date date_debut_encheres, Date date_fin_encheres, int prix_initial, int no_utilisateur, int no_categorie) {
+        this.no_article = no_article;
+        this.nom_article = nom_article;
+        this.description = description;
+        this.date_debut_encheres = date_debut_encheres;
+        this.date_fin_encheres = date_fin_encheres;
+        this.prix_initial = prix_initial;
+        this.no_utilisateur = no_utilisateur;
+        this.no_categorie = no_categorie;
+    }
 
+    public Articles_Vendus(int no_article) {
+        this.no_article = no_article;
+    }
 }

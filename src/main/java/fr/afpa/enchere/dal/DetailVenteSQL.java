@@ -12,7 +12,7 @@ public class DetailVenteSQL {
      * Création de la constante SELECT_ARTICLE pour faire appelle à la requéte SQL dans la méthode.
      * La méthode permet de selectionner les élements choisis par rapport au no_article.
      */
-    private static final String SELECT_ARTICLE = " SELECT nom_article, description, categories.libelle, prix_vente," +
+    private static final String SELECT_ARTICLE = " SELECT no_article, nom_article, description, categories.libelle, prix_vente," +
             " prix_initial, date_fin_encheres, utilisateurs.pseudo, articles_vendus.no_utilisateur," +
             " articles_vendus.no_categorie" +
             " FROM articles_vendus" +
@@ -30,6 +30,7 @@ public class DetailVenteSQL {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 detailVente = new Articles_vendusCategoriesUtilisateurs(
+                        rs.getInt("no_article"),
                         rs.getString("nom_article"),
                         rs.getString("description"),
                         rs.getString("libelle"),

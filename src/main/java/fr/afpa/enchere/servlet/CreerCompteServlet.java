@@ -33,8 +33,7 @@ public class CreerCompteServlet extends HttpServlet {
         String confirmPassWord = request.getParameter("confirm");
         newCompte.insertCreaCompteSQL(pseudoUtilisateur, nomUtilisateur, prenomUtilisateur, mailUtilisateur, telUtilisateur, rue, codePostal, ville, passWord, confirmPassWord);
         if (passWord.equals(confirmPassWord)) {
-            //changer vers la page d'acceuil connected
-            request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/indexConnecter.jsp").forward(request, response);
         }
     }
 }

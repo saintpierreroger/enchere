@@ -1,12 +1,13 @@
 package fr.afpa.enchere.dal;
 
 import fr.afpa.enchere.bo.Articles_Vendus;
-import fr.afpa.enchere.bo.Encheres;
 import fr.afpa.enchere.bo.UtilisateursArticles_Vendus;
 
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,15 @@ public class ArticleSQL {
             " INNER JOIN categories " +
             " ON articles_vendus.no_categorie = categories.no_categorie" +
             " WHERE articles_vendus.nom_article LIKE ? AND categories.no_categorie LIKE ?";
+
+    private static final String DELETE_ARTICLE = "DELETE FROM articles_vendus WHERE no_utilisateur = ?";
+
+    private static final String INSERT_INTO_ARTICLES = "INSERT INTO articles_vendus(nom_article, description," +
+            " date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie)" +
+            " VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    private static final String SELECT_DERNIER = "SELECT no_article FROM articles_vendus" +
+            " ORDER BY no_article DESC LIMIT 1";
 
     public List<Articles_Vendus> selectAll() {
         List<Articles_Vendus> listeArticles = new ArrayList<>();
@@ -77,4 +87,59 @@ public class ArticleSQL {
         }
         return listeArticles;
     }
+
+    public void deleteArticle(int no_utilisateur) {
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(DELETE_ARTICLE);
+            pstmt.setInt(1, no_utilisateur);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertIntoArticles(String nom_article, String description, Date date_debut_encheres, Date date_fin_encheres,
+                                   int prix_initial, int no_utilisateur, int no_categorie) {
+        try (Connection connection = ConnectionProvider.getConnection()) {
+            try {
+                connection.setAutoCommit(false);
+                PreparedStatement pstmt;
+                ResultSet rs;
+                pstmt = connection.prepareStatement(INSERT_INTO_ARTICLES);
+                pstmt.setString(1, nom_article);
+                pstmt.setString(2, description);
+                pstmt.setDate(3, date_debut_encheres);
+                pstmt.setDate(4, date_fin_encheres);
+                pstmt.setInt(5, prix_initial);
+                pstmt.setInt(6, no_utilisateur);
+                pstmt.setInt(7, no_categorie);
+                pstmt.executeUpdate();
+                pstmt.close();
+                connection.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+                connection.rollback();
+                throw e;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int selectDernier() {
+        int id_article = 0;
+        try (Connection connection = ConnectionProvider.getConnection()) {
+            PreparedStatement pstmt = connection.prepareStatement(SELECT_DERNIER);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                id_article = ((rs.getInt("no_article")));
+            }
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id_article;
+    }
+
 }
