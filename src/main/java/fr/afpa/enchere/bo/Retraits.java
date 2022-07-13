@@ -10,4 +10,7 @@ public class Retraits {
     private String code_postale;
     private String ville;
 
+    public Retraits() {
+
+    }
 }

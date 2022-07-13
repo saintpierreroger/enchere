@@ -32,4 +32,15 @@ public class Articles_vendusCategoriesUtilisateurs {
     public Articles_vendusCategoriesUtilisateurs() {
 
     }
+
+    public Articles_vendusCategoriesUtilisateurs(String nom_article, String description, String libelle, int prix_vente, int prix_initial, Date date_fin_encheres, String pseudo, int no_utilisateur) {
+        this.nom_article = nom_article;
+        this.description = description;
+        this.libelle = libelle;
+        this.prix_vente = prix_vente;
+        this.prix_initial = prix_initial;
+        this.date_fin_encheres = date_fin_encheres;
+        this.pseudo = pseudo;
+        this.no_utilisateur = no_utilisateur;
+    }
 }

@@ -13,8 +13,8 @@
     <title>Document</title>
 </head>
 <body>
-
-<form action="NewVente" method="post" enctype="multipart/form-data">
+<h1> Nouvelle vente </h1>
+<form action="NewVente" method="post">
     <p>
         <label for="article">Article : </label>
         <input type="text" name="article" id="article">
@@ -25,16 +25,21 @@
         <textarea name="description" id="desciption" rows="10" cols="30"></textarea>
     </p>
     <p>
+    <div>
         <label for="categorie">Catégorie : </label>
         <select name="categorie" id="categorie" size="1">
-            <optgroup label="categorie>">
-                <option value="">
-                <option value="">
+            <optgroup label="categorie">
+                <option value="1">Informatique</option>
+                <option value="2">Ameublement</option>
+                <option value="3">Vêtement</option>
+                <option value="4">Sport&Loisirs</option>
             </optgroup>
         </select>
+    </div>
+
     </p>
-    <label for="photo"> Photo de l'article </label>
-    <input type="file" id="photo" name="photo" accept="*/image*">
+    <label> Photo de l'article </label>
+    <input type="file" id="photo">
     <p>
         Mise à prix:
         <input type="number" min="1" step="1" name="miseAprix">
@@ -46,23 +51,31 @@
     </p>
     <p>
     <fieldset>
-        <legend>Retrait</legend>
-        <div>
-            <label for="article">Rue : </label>
-            <input type="text" name="article" id="rue">
-        </div>
-        <div>
-            <label for="article">Code postal : </label>
-            <input type="text" name="article" id="codePostal">
-        </div>
-        <div>
-            <label for="article">Ville : </label>
-            <input type="text" name="article" id="ville">
-        </div>
+        <!-- Boucle for each qui va afficher l'adresse en fonction de celle du vendeur -->
+        <c:forEach var="adresseRetrait" items="${adresse}">
+            <legend>Retrait</legend>
+            <div>
+                <label for="article">Rue : </label>
+                <input placeholder="${adresseRetrait.rue}" aria-label="${adresseRetrait.rue}" type="text" name="article"
+                       id="rue">
+            </div>
+            <div>
+                <label for="article">Code postal : </label>
+                <input placeholder="${adresseRetrait.codePostal}" aria-label="${adresseRetrait.codePostal}" type="text"
+                       name="article"
+                       id="codePostal">
+            </div>
+            <div>
+                <label for="article">Ville : </label>
+                <input placeholder="${adresseRetrait.ville}" aria-label="${adresseRetrait.ville}" type="text"
+                       name="article"
+                       id="ville">
+            </div>
+        </c:forEach>
     </fieldset>
-    </p>
+    <a href="${pageContext.request.contextPath}/DetailVente">Enregistrer</a>
+    <a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
 </form>
-<a href="${pageContext.request.contextPath}/NewVente"><input type="submit">Enregistrer</a>
-<a href="${pageContext.request.contextPath}/indexConnecter">annuler</a>
+
 </body>
 </html>

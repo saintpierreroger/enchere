@@ -5,11 +5,13 @@ import fr.afpa.enchere.bo.Articles_vendusCategoriesUtilisateurs;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DetailVenteSQL {
 
+    /**
+     * Création de la constante SELECT_ARTICLE pour faire appelle à la requéte SQL dans la méthode.
+     * La méthode permet de selectionner les élements choisis par rapport au no_article.
+     */
     private static final String SELECT_ARTICLE = " SELECT nom_article, description, categories.libelle, prix_vente," +
             " prix_initial, date_fin_encheres, utilisateurs.pseudo, articles_vendus.no_utilisateur," +
             " articles_vendus.no_categorie" +
@@ -34,7 +36,8 @@ public class DetailVenteSQL {
                         rs.getInt("prix_vente"),
                         rs.getInt("prix_initial"),
                         rs.getDate("date_fin_encheres"),
-                        rs.getString("pseudo"));
+                        rs.getString("pseudo"),
+                        rs.getInt("no_utilisateur"));
             }
             connection.close();
         } catch (Exception e) {
