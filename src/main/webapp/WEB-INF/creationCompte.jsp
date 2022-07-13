@@ -19,10 +19,12 @@
     <title>Document</title>
 </head>
 <body>
-<a href="indexConnecter"><img src="media/img/logoEnchere.png" alt="logo" class="logo"></a>
+<a href="index"><img src="media/img/logoEnchere.png" alt="logo" class="logo"></a>
 
 <!--formulaire d'inscription--->
-<h2 class="titreProfil">Mon profil</h2>
+<div class="titreProfil">
+    <h2>Mon profil</h2>
+</div>
 <div class="formInscript">
     <form action="compteServlet" method="post">
         <div>
