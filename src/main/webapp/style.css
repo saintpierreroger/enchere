@@ -7,6 +7,7 @@ h1 {
 body {
     background: linear-gradient(160deg, #FCF8E8, #7cdede);
     font-size: 1.2em;
+    min-height: 100vh;
 }
 
 h2 {
@@ -115,8 +116,19 @@ a:hover {
 
 }
 
+.formInscriptMDP {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 .titreProfil {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
 }
 
 .btnAnnuler {

@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<form action="NewVente" method="post">
+<form action="NewVente" method="post" enctype="multipart/form-data">
     <p>
         <label for="article">Article : </label>
         <input type="text" name="article" id="article">
@@ -33,8 +33,8 @@
             </optgroup>
         </select>
     </p>
-    <label> Photo de l'article </label>
-    <input type="file" id="photo">
+    <label for="photo"> Photo de l'article </label>
+    <input type="file" id="photo" name="photo" accept="*/image*">
     <p>
         Mise à prix:
         <input type="number" min="1" step="1" name="miseAprix">
